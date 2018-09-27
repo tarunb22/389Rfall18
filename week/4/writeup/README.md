@@ -1,17 +1,20 @@
 Writeup 3 - Pentesting I
 ======
 
-Name: *PUT YOUR NAME HERE*
-Section: *PUT YOUR SECTION HERE*
+Name: Tarun Balachander
+
+Section: 0101
 
 I pledge on my honor that I havie not given or received any unauthorized assistance on this assignment or examination.
 
-Digital acknowledgement of honor pledge: *PUT YOUR NAME HERE*
+Digital acknowledgement of honor pledge: Tarun Balachander
 
 ## Assignment 4 Writeup
 
 ### Part 1 (45 pts)
-*Put your writeup >= 300 words here in response to the part 1 prompt*
+
+The flag that I located is: CMSC389R-{p1ng_as_a_$erv1c3}. The input that I used to obtain this flag was as follows: ; cd home && cat flag.txt and I was able to grab the flag text. When I first typed nc cornerstoneairlines.co 45 into the terminal I saw that the first thing shows was a prompt asking for an IP address. I typed in random IP addresses and saw that it was running the unix ping command on the given IP address. Using the given hint that the server is vulnerable to command injection I did some research on what exactly command injection entails. I learned that because Fred was calling a unix command on his server and using user input, it left a large vulnerability in the form that a user is able to call extra commands along with his ping call if done correctly. I first started by running ping with a number as filler input as well as syntax such as: && ls. This would run the ping command and also perform ls on the current directory on the system. This worked but was fairly tedious especially because the ping command was running every time and gave a lot of unwanted output. Doing some research and testing myself I realized that calling the ping command with no input would not run it and rather than doing && I can do ; [my commands] and that was more proper command injection. The result of this was doing things such as ; ls which was much more efficient. This was how I was able to efficiently grab the flag. I was able to find the uptime script fairly easily as I searched online where scripts would typically be stored and the first result was in the opt folder. Some looking and after running the command: ; cd opt && cat container_startup.sh I was able to view his uptime script. It is not good because Fred just grabs the users input and calls it with command. To remove some vulnerability Fred can make it so that he is grabbing only the first result of the command line as well as making sure the users input is only integers or a valid IP. These will help his vulnerability but is probably best to not even call based off of user input as it leaves yourself open to attack.
 
 ### Part 2 (55 pts)
-*Put your writeup >= 200 words here in response to part 2 prompt. Your code for part 2 should be copied into a file in the /writeup directory and pushed there as well*
+
+For Part 2 I used a lot of information from both part 1 as well as homework 2 were we used the same socket/receive and send data format. Implementing the pull/help/quit part of the shell was not to hard for me to do. The basis of the shell we needed to input was parsing for user input and executing commands based off of it. The only 2 commands I really had to check for was both shell and pull as both malformed input and shell just printed out the help menu (in my implementation not sure exactly if that is what was meant by usage function). For pull all I did was split up the users input by spaces and sent the remote path along with a cat to the execute command method. The execute command just receives the initial output when connecting to the server, then sends the command input along with the ; for proper command injection, and then receives and returns the data back to the caller. For pull I then take back the received data and write it to the given local path file. Shell is where I had a lot of problems and confusion implementing properly. I was able to get the basis of shell where it essentially is acting as a shell for the server but the problem with it for me is that I could not figure out how to properly chain different commands within my shell when the servers command injection only allows 1 input (to my knowledge). My implementation of shell works where you can input a command and it is done in the cornerstoneairlines server but I was not able to properly get it to chain commands so that a cd home then cd flag would take you to a flag directory. This is something I would like to fix in the future in order to get a fully working interactive shell  
