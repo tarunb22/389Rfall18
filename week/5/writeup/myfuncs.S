@@ -30,7 +30,8 @@ my_strncpy:
     s1:
         cmp rcx, rdx  ;compare i and size
         jge s2        ;if i >= size then jump to l2
-        mov [rax + rcx], [rsi + rcx]    ;dst[i] = src[i];
+        mov r8, [rsi + rcx]   ;src[i]
+        mov [rax + rcx], r8    ;dst[i] = src[i];
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
     s2:
