@@ -10,8 +10,8 @@ my_memset:
     l1:
         cmp rcx, rdx  ;compare i and size
         jge l2        ;if i >= size then jump to l2
-        inc rcx       ; increment accumulator
         mov qword [rax+rcx*8], rsi    ; add val to str
+        inc rcx       ; increment accumulator
         jmp l1        ; go back to cmp
     l2:
         leave         ;moves down the stack pointer to the current base pointer,
