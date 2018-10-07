@@ -30,7 +30,7 @@ my_strncpy:
     s1:
         cmp rcx, rdx  ;compare i and size
         jge s2        ;if i >= size then jump to l2
-        mov r8, byte [rsi + rcx]
+        mov r8, [rsi + rcx]
         mov rax, r8
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
