@@ -10,7 +10,7 @@ my_memset:
     l1:
         cmp rcx, rdx  ;compare i and size
         jge l2        ;if i >= size then jump to l2
-        mov [rax + rcx], rsi    ; add val to str
+        mov byte [rax + rcx], rsi    ; add val to str
         inc rcx       ; increment accumulator
         jmp l1        ; go back to cmp
     l2:
@@ -31,7 +31,7 @@ my_strncpy:
         cmp rcx, rdx  ;compare i and size
         jge s2        ;if i >= size then jump to l2
         mov r8, [rsi + rcx]
-        mov rax, r8
+        mov byte [rax + rcx], r8
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
     s2:
