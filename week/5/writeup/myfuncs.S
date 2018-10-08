@@ -27,16 +27,15 @@ my_strncpy:
 
         mov rax, rdi  ;send str to rax
         mov rcx, 0    ;i accumulator, set to 0
-        dec rdi
-        mov r9, [rax + rdi]
     s1:
         cmp rcx, rdx  ;compare i and size
-        jge s2        ;if i >= size then jump to l2
+        jg s2        ;if i >= size then jump to l2
         mov r8, [rsi + rcx]
         mov qword [rax + rcx], r8
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
     s2:
+        mov r9, [rdi + rcx]
         mov [rax + rcx], r9
         leave         ;moves down the stack pointer to the current base pointer,
                       ;and restores our saved base pointer, effectively
