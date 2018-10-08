@@ -27,6 +27,7 @@ my_strncpy:
 
         mov rax, rdi  ;send str to rax
         mov rcx, 0    ;i accumulator, set to 0
+        dec rdi
         mov r9, [rax + rdi]
     s1:
         cmp rcx, rdx  ;compare i and size
