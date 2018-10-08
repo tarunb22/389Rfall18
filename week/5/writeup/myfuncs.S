@@ -5,12 +5,12 @@ my_memset:
         push rbp      ;saves the base pointer for the previous function's stack frame
         mov rbp, rsp  ;moves up the base pointer to the top of the stack to create a new frame
 
-        mov rax, rdi ;send str to rax
+        mov rax, rdi  ;send str to rax
         mov rcx, 0    ;i accumulator, set to 0
     l1:
         cmp rcx, rdx  ;compare i and size
         jge l2        ;if i >= size then jump to l2
-        mov qword [rax + rcx], rsi    ; add val to str
+        mov byte [rax + rcx], rsi    ; add val to str
         inc rcx       ; increment accumulator
         jmp l1        ; go back to cmp
     l2:
@@ -31,7 +31,7 @@ my_strncpy:
         cmp rcx, rdx  ;compare i and size
         jg s2        ;if i >= size then jump to l2
         mov r8, [rsi + rcx]
-        mov r8 + 1, [rax + rcx + 1]
+
         mov qword [rax + rcx], r8
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
