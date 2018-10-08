@@ -7,6 +7,7 @@ my_memset:
 
         mov rax, rdi  ;send str to rax
         mov rcx, 0    ;i accumulator, set to 0
+        mov r10, [rax + rdx]
     l1:
         cmp rcx, rdx  ;compare i and size
         jge l2        ;if i >= size then jump to l2
@@ -14,6 +15,7 @@ my_memset:
         inc rcx       ; increment accumulator
         jmp l1        ; go back to cmp
     l2:
+        mov [rax + rcx], r10
         leave         ;moves down the stack pointer to the current base pointer,
                       ;and restores our saved base pointer, effectively
                       ;restoring our previous stack frame
@@ -30,8 +32,8 @@ my_strncpy:
     s1:
         cmp rcx, rdx  ;compare i and size
         jge s2        ;if i >= size then jump to l2
-        mov r8, [rsi + rcx]
-        mov qword [rax + rcx], r8
+        mov r8, [rsi + rcx]   ;store src[i]
+        mov qword [rax + rcx], r8  ;dst[i] = src[i]
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
     s2:
