@@ -35,8 +35,7 @@ my_strncpy:
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
     s2:
-        inc rcx
-        mov qword [rax + rcx], 0
+    
         leave         ;moves down the stack pointer to the current base pointer,
                       ;and restores our saved base pointer, effectively
                       ;restoring our previous stack frame
