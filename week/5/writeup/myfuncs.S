@@ -25,18 +25,17 @@ my_strncpy:
         push rbp      ;saves the base pointer for the previous function's stack frame
         mov rbp, rsp  ;moves up the base pointer to the top of the stack to create a new frame
 
-        mov rax, rdi  ;send str to rax
+      ;  mov rax, rdi  ;send str to rax
         mov rcx, 0    ;i accumulator, set to 0
     s1:
         cmp rcx, rdx  ;compare i and size
         jg s2        ;if i >= size then jump to l2
-        mov r8, [rsi + rcx]
-        mov qword [rax + rcx], r8
+        ;mov r8, [rsi + rcx]
+        ;mov qword [rax + rcx], r8
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
     s2:
-        mov r9, [rdi + rcx]
-        mov [rax + rcx], r9
+        mov rax, [rdi + rcx]
         leave         ;moves down the stack pointer to the current base pointer,
                       ;and restores our saved base pointer, effectively
                       ;restoring our previous stack frame
