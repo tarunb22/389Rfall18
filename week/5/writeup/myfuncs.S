@@ -5,7 +5,6 @@ my_memset:
         push rbp      ;saves the base pointer for the previous function's stack frame
         mov rbp, rsp  ;moves up the base pointer to the top of the stack to create a new frame
 
-        inc rdx
         mov rax, rdi ;send str to rax
         mov rcx, 0    ;i accumulator, set to 0
     l1:
@@ -15,6 +14,7 @@ my_memset:
         inc rcx       ; increment accumulator
         jmp l1        ; go back to cmp
     l2:
+        mov qword [rax + rcx], rdi
         leave         ;moves down the stack pointer to the current base pointer,
                       ;and restores our saved base pointer, effectively
                       ;restoring our previous stack frame
