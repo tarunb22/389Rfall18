@@ -27,6 +27,7 @@ my_strncpy:
 
         mov rax, rdi  ;send str to rax
         mov rcx, 0    ;i accumulator, set to 0
+        mov qword [rsi + rdx + 1], 0
     s1:
         cmp rcx, rdx  ;compare i and size
         jge s2        ;if i >= size then jump to l2
