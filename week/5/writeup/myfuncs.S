@@ -31,7 +31,7 @@ my_strncpy:
         cmp rcx, rdx  ;compare i and size
         jg s2        ;if i >= size then jump to l2
         mov r8, [rsi + rcx]
-
+        mov [r8 + 1], 0
         mov qword [rax + rcx], r8
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
