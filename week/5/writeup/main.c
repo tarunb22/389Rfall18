@@ -12,8 +12,8 @@ int main(void)
   char b[] = "Hello World!";
 
   /* should print "Hello zzzzz!" */
-//  my_memset(a+6, 'z', 5);
-  //printf("%s\n", a);
+  my_memset(a+6, 'z', 5);
+  printf("%s\n", a);
 
   /* should print "Hello Hello!" */
   my_strncpy(a+6, b, 5);
