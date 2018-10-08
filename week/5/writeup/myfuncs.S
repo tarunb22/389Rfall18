@@ -7,7 +7,7 @@ my_memset:
 
         mov rax, rdi  ;send str to rax
         mov rcx, 0    ;i accumulator, set to 0
-        mov r10, [rax + rdx]
+        mov r10, [rax + rdx]  ;saves the end of the dst string that wont be getting replaced
     l1:
         cmp rcx, rdx  ;compare i and size
         jge l2        ;if i >= size then jump to l2
@@ -15,7 +15,7 @@ my_memset:
         inc rcx       ; increment accumulator
         jmp l1        ; go back to cmp
     l2:
-        mov [rax + rcx], r10
+        mov [rax + rcx], r10    ;adds back on the end of the dst string that wasnt replaced
         leave         ;moves down the stack pointer to the current base pointer,
                       ;and restores our saved base pointer, effectively
                       ;restoring our previous stack frame
@@ -29,7 +29,7 @@ my_strncpy:
 
         mov rax, rdi  ;send str to rax
         mov rcx, 0    ;i accumulator, set to 0
-        mov r12, [rax + rdx]
+        mov r12, [rax + rdx] ;saves the end of the dst string thast wont be getting replaced
     s1:
         cmp rcx, rdx  ;compare i and size
         jge s2        ;if i >= size then jump to l2
@@ -38,7 +38,7 @@ my_strncpy:
         inc rcx       ; increment accumulator
         jmp s1        ; go back to cmp
     s2:
-        mov [rax + rcx], r12
+        mov [rax + rcx], r12    ;adds back on the end of the dst string that wasnt replaced.
         leave         ;moves down the stack pointer to the current base pointer,
                       ;and restores our saved base pointer, effectively
                       ;restoring our previous stack frame
