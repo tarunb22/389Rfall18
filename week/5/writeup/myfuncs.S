@@ -29,7 +29,7 @@ my_strncpy:
         mov rcx, 0    ;i accumulator, set to 0
     s1:
         cmp rcx, rdx  ;compare i and size
-        jge s2        ;if i >= size then jump to l2
+        jg s2        ;if i >= size then jump to l2
         mov r8, [rsi + rcx]
         mov qword [rax + rcx], r8
         inc rcx       ; increment accumulator
