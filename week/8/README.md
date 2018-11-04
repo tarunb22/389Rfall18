@@ -18,7 +18,7 @@ The hackers don't know that our network engineer saved all network traffic from 
 
 2. What are the names used by the hackers?
 
-3. What are the hackers' IP addresses, and where are they connecting from? 
+3. What are the hackers' IP addresses, and where are they connecting from?
 
 4. What port are they using to communicate on our server?
 
@@ -46,7 +46,7 @@ you'd like to develop in Python.
     2. Who authored `update.fpff`?
     3. How many sections does `update.fpff` *say* it has? How many sections are there *really*?
     4. List each section, giving us the data in it *and* its type.
-    5. Report *at least* one flag hidden in `update.fpff`. Any other flag found will count as bonus points towards the *competition* portion of the syllabus. 
+    5. Report *at least* one flag hidden in `update.fpff`. Any other flag found will count as bonus points towards the *competition* portion of the syllabus.
 
 #### Important notes
 
