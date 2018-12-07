@@ -13,10 +13,15 @@ Digital acknowledgement of honor pledge: Tarun Balachander
 ### Part 1 (60 Pts)
 
 For part 1 the goal was to compare the created hash w/ hexdigest against the one within the hashes file. This was fairly easy other than converting the salt and word into a hash as it took some time to figure out it needed to be encoded as well as the proper order for it. Other than that it was fairly simple to print the salt + hash which I did and got:
+
 k neptune
+
 m jordan
+
 p pizza
+
 u loveyou
+
 
 ### Part 2 (40 Pts)
 
